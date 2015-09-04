@@ -1,4 +1,12 @@
 <?php
+/**
+*
+* UpdateBuilder class
+*
+* Examples:
+* $db->update('user', array('name'=>'Ivan', 'age'=>'20'));
+*
+*/
 
 class UpdateBuilder extends WhereBuilder{
 	
@@ -34,10 +42,20 @@ class UpdateBuilder extends WhereBuilder{
 		
 	}
 	
+	/**
+     * Get a SQL-request string.
+     *
+     * @return string
+     */
 	function getQuery(){
 		return $this->update.$this->set.$this->where.';';
 	}	
 	
+	/**
+     * Get a SQL-request values.
+     *
+     * @return array
+     */
 	function getQueryParams(){
 		return array_merge($this->set_arr, $this->where_arr);
 	}

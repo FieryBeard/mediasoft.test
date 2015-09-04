@@ -1,4 +1,23 @@
 <?php
+/**
+*
+* QueryBuilder class
+*
+* Connection:
+* $db = new QueryBuilder(); 		// with default settings
+*
+* $conf = array(
+* 	'type'		=> 'mysql',			// pgsql, mssql, sqlite
+* 	'host'      => 'localhost',
+* 	'user'      => 'root',
+* 	'pass'      => 'pass',
+* 	'db'        => 'test'
+* );
+*
+* $db = new QueryBuilder($conf);	// with some of the default settings overwritten
+*
+*/
+
 require_once("WhereBuilder.php");
 require_once("SelectBuilder.php");
 require_once("InsertBuilder.php");
@@ -38,12 +57,24 @@ class QueryBuilder{
 		}catch(PDOException $e){  
 			
 			echo 'Error: '.$e->getMessage(); 
-			exit;
+			return false;
 			 
 		}
 		
 	}
 	
+	/**
+     * Builds a SELECT SQL-request.
+     *
+     * Examples:
+     * $db->select();
+     * $db->select('id');
+     * $db->select('id,name');
+     * $db->select(array('id','name'));
+     *
+     * @param mixed $columns
+     * @return SelectBuilder
+     */
 	function select($columns='*'){
 		
 		$this->action = new SelectBuilder($columns);
@@ -52,6 +83,16 @@ class QueryBuilder{
 		
 	}
 	
+	/**
+     * Builds a INSERT INTO SQL-request.
+     *
+     * Examples:
+     * $db->insert('user', array('name'=>'Ivan', 'age'=>'20'));
+     *
+     * @param string $table
+     * @param array $data
+     * @return InsertBuilder
+     */
 	function insert($table, $data){
 		
 		$this->action = new InsertBuilder($table, $data);
@@ -60,6 +101,16 @@ class QueryBuilder{
 		
 	}
 	
+	/**
+     * Builds a UPDATE SQL-request.
+     *
+     * Examples:
+     * $db->update('user', array('name'=>'Ivan', 'age'=>'20'));
+     *
+     * @param string $table
+     * @param array $data
+     * @return UpdateBuilder
+     */
 	function update($table, $data){
 		
 		$this->action = new UpdateBuilder($table, $data);
@@ -68,6 +119,15 @@ class QueryBuilder{
 		
 	}
 		
+	/**
+     * Builds a DELETE SQL-request.
+     *
+     * Examples:
+     * $db->delete('user');
+     *
+     * @param string $table
+     * @return DeleteBuilder
+     */
 	function delete($table){
 		
 		$this->action = new DeleteBuilder($table);
@@ -76,6 +136,16 @@ class QueryBuilder{
 		
 	}
 	
+	/**
+     * Execute a SQL-request.
+     *
+     * Examples:
+     * $db->save();
+     * $db->save(PDO::FETCH_NUM));
+     *
+     * @param string $mode
+     * @return array/FALSE
+     */
 	function save($mode=PDO::FETCH_ASSOC){
 		
 		try{
@@ -89,7 +159,7 @@ class QueryBuilder{
 		}catch(PDOException $e){
 			
 			echo 'Error: '.$e->getMessage();  
-			exit;
+			return false;
 			
 		}
 		

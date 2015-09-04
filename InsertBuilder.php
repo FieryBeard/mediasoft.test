@@ -1,4 +1,12 @@
 <?php
+/**
+*
+* InsertBuilder class
+*
+* Examples:
+* $db->insert('user', array('name'=>'Ivan', 'age'=>'20'));
+*
+*/
 	
 class InsertBuilder{
 	
@@ -33,10 +41,20 @@ class InsertBuilder{
 		
 	}
 	
+	/**
+     * Get a SQL-request string.
+     *
+     * @return string
+     */
 	function getQuery(){
 		return $this->insert.';';
 	}	
 	
+	/**
+     * Get a SQL-request values.
+     *
+     * @return array
+     */
 	function getQueryParams(){
 		return $this->insert_arr;
 	}

@@ -1,4 +1,17 @@
 <?php
+/**
+*
+* SelectBuilder class
+*
+* Examples:
+* $db->select()
+*	->from('user')
+*	->orderby('age')
+*	->groupby(array('name','age'))
+*	->limit(5);
+*	->offset(0,3);
+*
+*/
 	
 class SelectBuilder extends WhereBuilder{
 	
@@ -20,6 +33,15 @@ class SelectBuilder extends WhereBuilder{
 		
 	}
 	
+	/**
+     * Generate a FROM part of SELECT SQL-request.
+     *
+     * Examples:
+     * $db->select()->from('user');
+     *
+     * @param string $table
+     * @return SelectBuilder
+     */
 	function from($table){
 		
 		$this->from = ' FROM '.trim($table);
@@ -28,6 +50,18 @@ class SelectBuilder extends WhereBuilder{
 		
 	}
 		
+	/**
+     * Generate a ORDER BY part of SELECT SQL-request.
+     *
+     * Examples:
+     * $db->select()->orderby('user');
+     * $db->select()->orderby(array('name','age'));
+     * $db->select()->orderby('user', 'DESC');
+     *
+     * @param mixed $col
+     * @param string $sort
+     * @return SelectBuilder
+     */
 	function orderby($col, $sort='ASC'){
 		
 		$sort = strtoupper(trim($sort));
@@ -45,6 +79,16 @@ class SelectBuilder extends WhereBuilder{
 		
 	}
 	
+	/**
+     * Generate a GROUP BY part of SELECT SQL-request.
+     *
+     * Examples:
+     * $db->select()->groupby('user');
+     * $db->select()->groupby(array('name','age'));
+     *
+     * @param mixed $col
+     * @return SelectBuilder
+     */
 	function groupby($col){
 		
 		$this->groupby .= (strlen($this->groupby) > 0)?', ':' GROUP BY ';
@@ -59,6 +103,15 @@ class SelectBuilder extends WhereBuilder{
 		
 	}
 	
+	/**
+     * Generate a LIMIT part of SELECT SQL-request.
+     *
+     * Examples:
+     * $db->select()->limit(10);
+     *
+     * @param int $rows
+     * @return SelectBuilder
+     */
 	function limit($rows){
 		
 		$rows = (int)$rows;
@@ -69,6 +122,16 @@ class SelectBuilder extends WhereBuilder{
 		
 	}
 	
+	/**
+     * Generate a LIMIT part of SELECT SQL-request with offset option.
+     *
+     * Examples:
+     * $db->select()->offset(10,20);
+     *
+     * @param int $offset
+     * @param int $rows
+     * @return SelectBuilder
+     */
 	function offset($offset, $rows){
 		
 		$offset = (int)$offset;
@@ -80,10 +143,20 @@ class SelectBuilder extends WhereBuilder{
 		
 	}
 	
+	/**
+     * Get a SQL-request string.
+     *
+     * @return string
+     */
 	function getQuery(){
 		return $this->select.$this->from.$this->where.$this->orderby.$this->groupby.$this->limit.';';
 	}	
 	
+	/**
+     * Get a SQL-request values.
+     *
+     * @return array
+     */
 	function getQueryParams(){
 		return $this->where_arr;
 	}
