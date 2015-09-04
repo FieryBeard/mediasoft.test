@@ -8,7 +8,7 @@ $db = new QueryBuilder(); 		// with default settings
 or
 ```php
 $conf = array(
-  'type'      => 'mysql',			// pgsql, mssql, sqlite
+  	'type'      => 'mysql',			// pgsql, mssql, sqlite
 	'host'      => 'localhost',
 	'user'      => 'root',
 	'pass'      => 'pass',
