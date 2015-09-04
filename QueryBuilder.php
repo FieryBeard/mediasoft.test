@@ -7,7 +7,7 @@
 * $db = new QueryBuilder(); 		// with default settings
 *
 * $conf = array(
-* 	'type'		=> 'mysql',			// pgsql, mssql, sqlite
+* 	'type'      => 'mysql',			// pgsql, mssql, sqlite
 * 	'host'      => 'localhost',
 * 	'user'      => 'root',
 * 	'pass'      => 'pass',
@@ -31,7 +31,7 @@ class QueryBuilder{
 	private $action;
 	
 	private $defaults = array(
-		'type'		=> 'mysql',
+		'type' 	    => 'mysql',
 		'host'      => 'localhost',
 		'user'      => 'root',
 		'pass'      => '',
@@ -63,7 +63,7 @@ class QueryBuilder{
 		
 	}
 	
-	/**
+     /**
      * Builds a SELECT SQL-request.
      *
      * Examples:
@@ -83,7 +83,7 @@ class QueryBuilder{
 		
 	}
 	
-	/**
+     /**
      * Builds a INSERT INTO SQL-request.
      *
      * Examples:
@@ -101,7 +101,7 @@ class QueryBuilder{
 		
 	}
 	
-	/**
+     /**
      * Builds a UPDATE SQL-request.
      *
      * Examples:
@@ -119,7 +119,7 @@ class QueryBuilder{
 		
 	}
 		
-	/**
+     /**
      * Builds a DELETE SQL-request.
      *
      * Examples:
@@ -136,7 +136,7 @@ class QueryBuilder{
 		
 	}
 	
-	/**
+     /**
      * Execute a SQL-request.
      *
      * Examples:
@@ -165,7 +165,5 @@ class QueryBuilder{
 		
 	}
 }
-
-
 
 ?>
