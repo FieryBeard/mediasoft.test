@@ -22,7 +22,7 @@ class WhereBuilder{
 	protected $where;
 	protected $where_arr = array();
 	
-	/**
+     /**
      * Add condition.
      *
      * Examples:
