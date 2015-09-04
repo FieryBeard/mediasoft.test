@@ -42,7 +42,7 @@ class UpdateBuilder extends WhereBuilder{
 		
 	}
 	
-	/**
+     /**
      * Get a SQL-request string.
      *
      * @return string
@@ -51,7 +51,7 @@ class UpdateBuilder extends WhereBuilder{
 		return $this->update.$this->set.$this->where.';';
 	}	
 	
-	/**
+     /**
      * Get a SQL-request values.
      *
      * @return array
