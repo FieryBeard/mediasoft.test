@@ -33,7 +33,7 @@ class SelectBuilder extends WhereBuilder{
 		
 	}
 	
-	/**
+     /**
      * Generate a FROM part of SELECT SQL-request.
      *
      * Examples:
@@ -50,7 +50,7 @@ class SelectBuilder extends WhereBuilder{
 		
 	}
 		
-	/**
+     /**
      * Generate a ORDER BY part of SELECT SQL-request.
      *
      * Examples:
@@ -79,7 +79,7 @@ class SelectBuilder extends WhereBuilder{
 		
 	}
 	
-	/**
+     /**
      * Generate a GROUP BY part of SELECT SQL-request.
      *
      * Examples:
@@ -103,7 +103,7 @@ class SelectBuilder extends WhereBuilder{
 		
 	}
 	
-	/**
+     /**
      * Generate a LIMIT part of SELECT SQL-request.
      *
      * Examples:
@@ -122,7 +122,7 @@ class SelectBuilder extends WhereBuilder{
 		
 	}
 	
-	/**
+     /**
      * Generate a LIMIT part of SELECT SQL-request with offset option.
      *
      * Examples:
@@ -143,7 +143,7 @@ class SelectBuilder extends WhereBuilder{
 		
 	}
 	
-	/**
+     /**
      * Get a SQL-request string.
      *
      * @return string
@@ -152,7 +152,7 @@ class SelectBuilder extends WhereBuilder{
 		return $this->select.$this->from.$this->where.$this->orderby.$this->groupby.$this->limit.';';
 	}	
 	
-	/**
+     /**
      * Get a SQL-request values.
      *
      * @return array
