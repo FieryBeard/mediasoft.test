@@ -41,7 +41,7 @@ class InsertBuilder{
 		
 	}
 	
-	/**
+     /**
      * Get a SQL-request string.
      *
      * @return string
@@ -50,7 +50,7 @@ class InsertBuilder{
 		return $this->insert.';';
 	}	
 	
-	/**
+     /**
      * Get a SQL-request values.
      *
      * @return array
